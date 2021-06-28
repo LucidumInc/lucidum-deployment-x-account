@@ -23,10 +23,10 @@ data "aws_iam_policy_document" "lucidum_x_account_deploy" {
     principals {
       type        = "AWS"
       identifiers = [
-          "arn:aws:iam::906036546615:root",
-          "arn:aws:iam::906036546615:role/lucidum-ec2-detection-prod",
-          "arn:aws:iam::308025194586:root",
-          "arn:aws:iam::308025194586:role/lucidum-ec2-detection-prod"
+          "arn:aws:iam::${var.child_account}:root",
+          "arn:aws:iam::${var.child_account}:role/lucidum-ec2-detection-prod",
+          "arn:aws:iam::${var.parent_account}:root",
+          "arn:aws:iam::${var.parent_account}:role/lucidum-ec2-detection-prod"
       ]
     }
   }

@@ -1,3 +1,4 @@
 x_account_deployment_*
 terraform.tfstate
 .terraform/
+.idea

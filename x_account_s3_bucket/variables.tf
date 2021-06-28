@@ -17,3 +17,13 @@ variable "trusted_accounts" {
   type    = list
   default = [ "308025194586", "906036546615" ]
 }
+
+variable "child_account" {
+  type = string
+  default = "906036546615"
+}
+
+variable "parent_account" {
+  type = string
+  default = "308025194586"
+}

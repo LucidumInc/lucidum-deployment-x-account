@@ -49,4 +49,5 @@ variable "lambda_log_group_prefix" {
 
 variable "lucidum_s3_bucket" {
   type    = string
+  default = "example-ec2-detection-bucket"
 }

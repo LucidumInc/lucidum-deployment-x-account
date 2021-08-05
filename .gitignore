@@ -1,4 +1,6 @@
 x_account_deployment_*
-terraform.tfstate
+terraform.tfstate*
+ec2_detection.zip
+.terraform.lock.hcl
 .terraform/
 .idea

@@ -1,5 +1,5 @@
 locals {
-  ec2_detect_prefix = "lucidum-ec2-detection-${var.environment}"
+  ec2_detect_prefix = "${var.ec2_detection_name}-${var.environment}"
 }
 
 resource "aws_iam_role" "ec2_detection" {
@@ -77,6 +77,7 @@ module "ec2_detection_us_east_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.us-east-1
   }
@@ -90,6 +91,7 @@ module "ec2_detection_us_east_2" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.us-east-2
   }
@@ -103,6 +105,7 @@ module "ec2_detection_us_west_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.us-west-1
   }
@@ -116,6 +119,7 @@ module "ec2_detection_us_west_2" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.us-west-2
   }
@@ -129,6 +133,7 @@ module "ec2_detection_ca_central_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.ca-central-1
   }
@@ -142,6 +147,7 @@ module "ec2_detection_eu_north_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.eu-north-1
   }
@@ -155,6 +161,7 @@ module "ec2_detection_eu_west_3" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.eu-west-3
   }
@@ -168,6 +175,7 @@ module "ec2_detection_eu_west_2" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.eu-west-2
   }
@@ -181,6 +189,7 @@ module "ec2_detection_eu_west_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.eu-west-1
   }
@@ -194,6 +203,7 @@ module "ec2_detection_eu_central_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.eu-central-1
   }
@@ -207,6 +217,7 @@ module "ec2_detection_ap_south_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.ap-south-1
   }
@@ -220,6 +231,7 @@ module "ec2_detection_ap_northeast_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.ap-northeast-1
   }
@@ -233,6 +245,7 @@ module "ec2_detection_ap_northeast_2" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.ap-northeast-2
   }
@@ -246,6 +259,7 @@ module "ec2_detection_ap_southeast_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.ap-southeast-1
   }
@@ -259,6 +273,7 @@ module "ec2_detection_ap_southeast_2" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.ap-southeast-2
   }
@@ -272,6 +287,7 @@ module "ec2_detection_sa_east_1" {
   environment             = var.environment
   execution_role_arn      = aws_iam_role.ec2_detection[0].arn
   s3_bucket               = var.lucidum_s3_bucket
+  ec2_detection_name      = var.ec2_detection_name
   providers = {
     aws = aws.sa-east-1
   }

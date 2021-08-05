@@ -8,6 +8,11 @@ variable "assume_role_name" {
   default = "lucidum_assume_role"
 }
 
+variable "assume_role_creation" {
+  type    = bool
+  default = true
+}
+
 variable "trust_account" {
   type    = string
 }
@@ -50,4 +55,9 @@ variable "lambda_log_group_prefix" {
 variable "lucidum_s3_bucket" {
   type    = string
   default = "example-ec2-detection-bucket"
+}
+
+variable "ec2_detection_name" {
+  type    = string
+  default = "lucidum-ec2-detection"
 }

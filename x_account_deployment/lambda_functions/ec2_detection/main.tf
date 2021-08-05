@@ -3,6 +3,7 @@ variable "stack_prefix" {}
 variable "lambda_log_group_prefix" {}
 variable "execution_role_arn" {}
 variable "s3_bucket" {}
+variable "ec2_detection_name" {}
 
 
 resource "aws_cloudwatch_event_rule" "ec2_detection" {
@@ -30,7 +31,7 @@ EOF
 
 resource "aws_lambda_function" "ec2_detection" {
   filename         = "ec2_detection.zip"
-  function_name    = "lucidum_ec2_detection"
+  function_name    = var.ec2_detection_name
   role             = var.execution_role_arn
   handler          = "ec2_detection.lambda_handler"
   source_code_hash = filebase64sha256(data.archive_file.ec2_detection.output_path)

@@ -1,6 +1,6 @@
 variable "stack_name" {
   type    = string
-  default = "lucidum-x-account-deploy"
+  default = "lucidum-x-account-s3-bucket"
 }
 
 variable "aws_region" {
@@ -13,17 +13,12 @@ variable "aws_profile" {
   default = "default"
 }
 
+variable "lambda_execution_role" {
+  type    = string
+  default = "lucidum-ec2-detection-prod"
+}
+
 variable "trusted_accounts" {
   type    = list
-  default = [ "308025194586", "906036546615" ]
 }
 
-variable "child_account" {
-  type = string
-  default = "906036546615"
-}
-
-variable "parent_account" {
-  type = string
-  default = "308025194586"
-}

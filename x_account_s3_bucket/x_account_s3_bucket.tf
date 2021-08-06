@@ -1,3 +1,9 @@
+provider "aws" {
+  region  = var.aws_region
+  profile = var.aws_profile
+}
+
+
 resource "aws_s3_bucket" "lucidum_x_account_deploy" {
   bucket_prefix = "${var.stack_name}-"
   acl           = "private"
@@ -23,10 +29,8 @@ data "aws_iam_policy_document" "lucidum_x_account_deploy" {
     principals {
       type        = "AWS"
       identifiers = [
-          "arn:aws:iam::${var.child_account}:root",
-          "arn:aws:iam::${var.child_account}:role/lucidum-ec2-detection-prod",
-          "arn:aws:iam::${var.parent_account}:root",
-          "arn:aws:iam::${var.parent_account}:role/lucidum-ec2-detection-prod"
+          "arn:aws:iam::${var.trusted_accounts[0]}:root",
+          "arn:aws:iam::${var.trusted_accounts[0]}:role/${var.lambda_execution_role}",
       ]
     }
   }
@@ -38,33 +42,6 @@ resource "aws_s3_bucket_policy" "lucidum_x_account_deploy" {
   policy = data.aws_iam_policy_document.lucidum_x_account_deploy.json
 }
 
-
-#resource "aws_s3_bucket_policy" "lucidum_x_account_deploy" {
-#  bucket = aws_s3_bucket.lucidum_x_account_deploy.id
-#
-#  policy = jsonencode({
-#    Version = "2012-10-17"
-#    Id      = "lucidumxaccountdeploy"
-#    Statement = [
-#      {
-#        Sid       = "xaccountallow"
-#        Effect    = "Allow"
-#        Principal =  { "AWS": [
-#          "arn:aws:iam::906036546615:root",
-#          "arn:aws:iam::906036546615:role/lucidum-ec2-detection-prod",
-#          "arn:aws:iam::308025194586:root",
-#          "arn:aws:iam::308025194586:role/lucidum-ec2-detection-prod"
-#        ]},
-#        Action    = "s3:*"
-#        Resource  = [
-#          "arn:aws:s3:::${aws_s3_bucket.lucidum_x_account_deploy.id}",
-#          "arn:aws:s3:::${aws_s3_bucket.lucidum_x_account_deploy.id}/*"
-#        ],
-#        Effect    = "Allow"
-#      }
-#    ]
-#  })
-#}
 
 output "lucidum_x_account_deploy_s3_bucket" {
   value = aws_s3_bucket.lucidum_x_account_deploy.id

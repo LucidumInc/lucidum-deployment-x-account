@@ -49,7 +49,7 @@ resource "aws_iam_policy" "ec2_detection" {
       "Effect": "Allow"
     },
     {
-      "Action": "s3:*",
+      "Action": "s3:PutObject",
       "Resource": "arn:aws:s3:::${var.lucidum_s3_bucket}/*",
       "Effect": "Allow"
     },
@@ -70,7 +70,7 @@ resource "aws_iam_role_policy_attachment" "ec2_detection" {
 }
 
 module "ec2_detection_us_east_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.us_east_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -84,7 +84,7 @@ module "ec2_detection_us_east_1" {
 }
 
 module "ec2_detection_us_east_2" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.us_east_2_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -98,7 +98,7 @@ module "ec2_detection_us_east_2" {
 }
 
 module "ec2_detection_us_west_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.us_west_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -112,7 +112,7 @@ module "ec2_detection_us_west_1" {
 }
 
 module "ec2_detection_us_west_2" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.us_west_2_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -126,7 +126,7 @@ module "ec2_detection_us_west_2" {
 }
 
 module "ec2_detection_ca_central_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.ca_central_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -140,7 +140,7 @@ module "ec2_detection_ca_central_1" {
 }
 
 module "ec2_detection_eu_north_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.eu_north_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -154,7 +154,7 @@ module "ec2_detection_eu_north_1" {
 }
 
 module "ec2_detection_eu_west_3" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.eu_west_3_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -168,7 +168,7 @@ module "ec2_detection_eu_west_3" {
 }
 
 module "ec2_detection_eu_west_2" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.eu_west_2_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -182,7 +182,7 @@ module "ec2_detection_eu_west_2" {
 }
 
 module "ec2_detection_eu_west_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.eu_west_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -196,7 +196,7 @@ module "ec2_detection_eu_west_1" {
 }
 
 module "ec2_detection_eu_central_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.eu_central_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -210,7 +210,7 @@ module "ec2_detection_eu_central_1" {
 }
 
 module "ec2_detection_ap_south_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.ap_south_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -224,7 +224,7 @@ module "ec2_detection_ap_south_1" {
 }
 
 module "ec2_detection_ap_northeast_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.ap_northeast_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -238,7 +238,7 @@ module "ec2_detection_ap_northeast_1" {
 }
 
 module "ec2_detection_ap_northeast_2" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.ap_northeast_2_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -252,7 +252,7 @@ module "ec2_detection_ap_northeast_2" {
 }
 
 module "ec2_detection_ap_southeast_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.ap_southeast_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -266,7 +266,7 @@ module "ec2_detection_ap_southeast_1" {
 }
 
 module "ec2_detection_ap_southeast_2" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.ap_southeast_2_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix
@@ -280,7 +280,7 @@ module "ec2_detection_ap_southeast_2" {
 }
 
 module "ec2_detection_sa_east_1" {
-  count                   = var.ec2_detection ? 1 : 0
+  count                   = var.ec2_detection && var.sa_east_1_enable ? 1 : 0
   source                  = "./lambda_functions/ec2_detection"
   lambda_log_group_prefix = var.lambda_log_group_prefix
   stack_prefix            = local.ec2_detect_prefix

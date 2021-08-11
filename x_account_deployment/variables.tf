@@ -61,3 +61,83 @@ variable "ec2_detection_name" {
   type    = string
   default = "lucidum-ec2-detection"
 }
+
+variable "us_west_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "us_west_2_enable" {
+  type    = bool
+  default = false
+}
+
+variable "us_east_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "us_east_2_enable" {
+  type    = bool
+  default = false
+}
+
+variable "ca_central_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "eu_north_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "eu_west_3_enable" {
+  type    = bool
+  default = false
+}
+
+variable "eu_west_2_enable" {
+  type    = bool
+  default = false
+}
+
+variable "eu_west_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "eu_central_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "ap_south_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "ap_northeast_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "ap_northeast_2_enable" {
+  type    = bool
+  default = false
+}
+
+variable "ap_southeast_1_enable" {
+  type    = bool
+  default = false
+}
+
+variable "ap_southeast_2_enable" {
+  type    = bool
+  default = false
+}
+
+variable "sa_east_1_enable" {
+  type    = bool
+  default = false
+}

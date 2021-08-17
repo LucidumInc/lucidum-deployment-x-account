@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "lucidum_x_account_deploy" {
     enabled = true
     
     expiration {
-       days = 90
+       days = 2
     }
   }
 }

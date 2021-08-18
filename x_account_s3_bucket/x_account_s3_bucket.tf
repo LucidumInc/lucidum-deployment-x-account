@@ -11,6 +11,15 @@ resource "aws_s3_bucket" "lucidum_x_account_deploy" {
   tags = {
     Name        = var.stack_name
   }
+  
+  lifecycle_rule {
+    id      = "lambda_bucket_life"
+    enabled = true
+    
+    expiration {
+       days = 2
+    }
+  }
 }
 
 

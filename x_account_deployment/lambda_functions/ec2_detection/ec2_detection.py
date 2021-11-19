@@ -3,18 +3,22 @@ import boto3
 import time
 import datetime
 import os
+from botocore.config import Config
+
 
 def lambda_handler(event, context):
+    
+    mConfig = Config(retries=dict(max_attempts=5), user_agent='Lucidum_AWS_Connector')
     
     instance_id = event['detail']['instance-id']
     state = event['detail']['state']
 
-    ec2_client = boto3.client('ec2')
+    ec2_client = boto3.client('ec2', config=mConfig)
     instance_info = ec2_client.describe_instances(InstanceIds=[instance_id])
     instance = instance_info['Reservations'][0]['Instances'][0]
     instance['lambda_ts'] = int(time.time())
     
-    s3 = boto3.client('s3')
+    s3 = boto3.client('s3', config=mConfig)
     
     s3.put_object(
         Body=json.dumps(instance, default=datetime_handler),

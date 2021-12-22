@@ -37,6 +37,7 @@
                 "inspector:Describe*",
                 "inspector:Get*",
                 "inspector:List*",
+                "inspector2:List*",
                 "kms:Describe*",
                 "kms:Get*",
                 "kms:List*",

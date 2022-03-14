@@ -54,6 +54,7 @@
                 "organizations:List*",
                 "pricing:Describe*",
                 "pricing:Get*",
+                "rds:Describe*",
                 "route53:List*",
                 "s3:Get*",
                 "s3:List*",

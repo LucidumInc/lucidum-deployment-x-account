@@ -19,6 +19,6 @@ variable "lambda_execution_role" {
 }
 
 variable "trusted_accounts" {
-  type    = list
+  type = list(any)
 }
 

@@ -20,7 +20,7 @@ ec2_detection = true
 
 
 ec2_detection_name = "lucidum-ec2-detection"
-lucidum_s3_bucket = "lucidum-x-account-s3-bucket-20210806185627531300000001"
+lucidum_s3_bucket  = "lucidum-x-account-s3-bucket-20210806185627531300000001"
 # this bucket is only required for ec2 detection lambda deployment
 # this is the location where the lambda code will write to
 
@@ -31,18 +31,18 @@ us_west_2_enable = true
 us_east_1_enable = true
 us_east_2_enable = true
 
-ca_central_1_enable = false
-eu_north_1_enable = false
-eu_west_3_enable = false
-eu_west_2_enable = false
-eu_west_1_enable = false
-eu_central_1_enable = false
-ap_south_1_enable = false
+ca_central_1_enable   = false
+eu_north_1_enable     = false
+eu_west_3_enable      = false
+eu_west_2_enable      = false
+eu_west_1_enable      = false
+eu_central_1_enable   = false
+ap_south_1_enable     = false
 ap_northeast_1_enable = false
 ap_northeast_2_enable = false
 ap_southeast_1_enable = false
 ap_southeast_2_enable = false
-sa_east_1_enable = false
+sa_east_1_enable      = false
 
 
 # optional terraform variables variables

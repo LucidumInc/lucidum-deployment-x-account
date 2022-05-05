@@ -4,13 +4,13 @@ data "aws_iam_policy_document" "lucidum_assume_role_trust" {
 
     principals {
       type        = "AWS"
-      identifiers = [ var.trust_account ]
+      identifiers = [var.trust_account]
     }
 
     condition {
       test     = "StringEquals"
       variable = "sts:ExternalId"
-      values = [ var.trust_external_id ]
+      values   = [var.trust_external_id]
     }
     actions = ["sts:AssumeRole"]
   }
@@ -24,10 +24,10 @@ resource "aws_iam_role" "lucidum_assume_role" {
 }
 
 resource "aws_iam_role_policy" "lucidum_assume_role_trust" {
-  count        = var.assume_role_creation ? 1 : 0
-  name_prefix  = var.assume_role_name
-  role         = aws_iam_role.lucidum_assume_role[0].name
-  policy       = file("lucidum_assume_role_policy.json")
+  count       = var.assume_role_creation ? 1 : 0
+  name_prefix = var.assume_role_name
+  role        = aws_iam_role.lucidum_assume_role[0].name
+  policy      = file("lucidum_assume_role_policy.json")
 }
 
 resource "local_file" "lucidum_role_arn" {

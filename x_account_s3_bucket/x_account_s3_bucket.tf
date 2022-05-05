@@ -9,15 +9,15 @@ resource "aws_s3_bucket" "lucidum_x_account_deploy" {
   acl           = "private"
 
   tags = {
-    Name        = var.stack_name
+    Name = var.stack_name
   }
-  
+
   lifecycle_rule {
     id      = "lambda_bucket_life"
     enabled = true
-    
+
     expiration {
-       days = 2
+      days = 2
     }
   }
 }
@@ -36,10 +36,10 @@ data "aws_iam_policy_document" "lucidum_x_account_deploy" {
     ]
 
     principals {
-      type        = "AWS"
+      type = "AWS"
       identifiers = [
-          "arn:aws:iam::${var.trusted_accounts[0]}:root",
-          "arn:aws:iam::${var.trusted_accounts[0]}:role/${var.lambda_execution_role}",
+        "arn:aws:iam::${var.trusted_accounts[0]}:root",
+        "arn:aws:iam::${var.trusted_accounts[0]}:role/${var.lambda_execution_role}",
       ]
     }
   }

@@ -1,4 +1,4 @@
-trusted_accounts = [ "308025194586" ]
+trusted_accounts = ["308025194586"]
 # this is the list of the aws accounts allowed to write to s3 bucket
 
 lambda_execution_role = "lucidum-ec2-detection-prod"

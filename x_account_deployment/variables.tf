@@ -14,7 +14,7 @@ variable "assume_role_creation" {
 }
 
 variable "trust_account" {
-  type    = string
+  type = string
 }
 
 variable "trust_external_id" {

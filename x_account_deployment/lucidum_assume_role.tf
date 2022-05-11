@@ -1,7 +1,14 @@
+/*
+  Setup an AWS role Lucidum can assume to.
+*/
+
+
+# Trust policy
 data "aws_iam_policy_document" "lucidum_assume_role_trust" {
   statement {
     effect = "Allow"
 
+    # the Lucidum account used for assuming this role
     principals {
       type        = "AWS"
       identifiers = [var.trust_account]
@@ -10,12 +17,16 @@ data "aws_iam_policy_document" "lucidum_assume_role_trust" {
     condition {
       test     = "StringEquals"
       variable = "sts:ExternalId"
+
+      # set to the private external ID string
       values   = [var.trust_external_id]
     }
     actions = ["sts:AssumeRole"]
   }
 }
 
+# Create an IAM role for AssumeRole use
+# and attach the trust policy created above.
 resource "aws_iam_role" "lucidum_assume_role" {
   count                = var.assume_role_creation ? 1 : 0
   name                 = var.assume_role_name
@@ -23,6 +34,8 @@ resource "aws_iam_role" "lucidum_assume_role" {
   max_session_duration = var.max_session_duration
 }
 
+# Resource permission policy.
+# Determine what this role can do.
 resource "aws_iam_role_policy" "lucidum_assume_role_trust" {
   count       = var.assume_role_creation ? 1 : 0
   name_prefix = var.assume_role_name
@@ -30,6 +43,7 @@ resource "aws_iam_role_policy" "lucidum_assume_role_trust" {
   policy      = file("lucidum_assume_role_policy.json")
 }
 
+# Dump the ARN to a local file
 resource "local_file" "lucidum_role_arn" {
   count           = var.assume_role_creation ? 1 : 0
   content         = aws_iam_role.lucidum_assume_role[0].arn

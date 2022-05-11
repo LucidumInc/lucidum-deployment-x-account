@@ -1,4 +1,4 @@
-# comment and uncomment the following configuration below as needed to 
+# comment and uncomment the following configuration below as needed to
 # enable terraform s3 remote state with dynamodb state locking
 
 #terraform {
@@ -9,6 +9,7 @@
 
 terraform {
   backend "s3" {
+    # TODO: parameterize these
     bucket = "lucidum-x-account-s3-bucket-20210806185627531300000001"
     key    = "lucidum-x-account.tfstate"
     region = "us-west-1"

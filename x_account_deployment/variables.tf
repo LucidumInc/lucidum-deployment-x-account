@@ -3,35 +3,43 @@ variable "stack_name" {
   default = "lucidum_x_account_deployment"
 }
 
-variable "assume_role_name" {
-  type    = string
-  default = "lucidum_assume_role"
-}
-
-variable "assume_role_creation" {
-  type    = bool
-  default = true
-}
-
-variable "trust_account" {
-  type = string
-}
-
-variable "trust_external_id" {
-  type    = string
-  default = "lucidum-access"
-}
-
+# Apply to which region
 variable "aws_region" {
   type    = string
   default = "us-west-1"
 }
 
+# Aplly TF using which profile for AWS access
 variable "aws_profile" {
   type    = string
   default = "default"
 }
 
+# Main variable to setup Lucidum account
+# which will be granted AssumeRole
+variable "trust_account" {
+  type = string
+}
+
+# AssumeRole name
+variable "assume_role_name" {
+  type    = string
+  default = "lucidum_assume_role"
+}
+
+# When set to true, will create an IAM role
+variable "assume_role_creation" {
+  type    = bool
+  default = true
+}
+
+# Can be any string
+variable "trust_external_id" {
+  type    = string
+  default = "lucidum-access"
+}
+
+# 24-hour in seconds
 variable "max_session_duration" {
   type    = number
   default = 43200

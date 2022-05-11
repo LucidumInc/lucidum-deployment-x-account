@@ -10,6 +10,7 @@ resource "aws_cloudwatch_event_rule" "ec2_detection" {
   name        = var.stack_prefix
   description = var.stack_prefix
 
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
   event_pattern = <<EOF
 {
   "detail-type": [
@@ -20,9 +21,12 @@ resource "aws_cloudwatch_event_rule" "ec2_detection" {
   ],
   "detail": {
     "state": [
+      "pending",
       "running",
-      "terminated",
-      "stopped"
+      "stopping",
+      "stopped",
+      "shutting-down",
+      "terminated"
     ]
   }
 }

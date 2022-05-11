@@ -1,9 +1,14 @@
+/*
+  Setup a S3 bucket for EC2 event Lambda data persistence
+*/
+
+
 provider "aws" {
   region  = var.aws_region
   profile = var.aws_profile
 }
 
-
+# Create S3 bucket
 resource "aws_s3_bucket" "lucidum_x_account_deploy" {
   bucket_prefix = "${var.stack_name}-"
   acl           = "private"
@@ -22,7 +27,7 @@ resource "aws_s3_bucket" "lucidum_x_account_deploy" {
   }
 }
 
-
+# Create an IAM policy
 data "aws_iam_policy_document" "lucidum_x_account_deploy" {
   version = "2012-10-17"
 
@@ -45,13 +50,13 @@ data "aws_iam_policy_document" "lucidum_x_account_deploy" {
   }
 }
 
-
+# Link policy to S3
 resource "aws_s3_bucket_policy" "lucidum_x_account_deploy" {
   bucket = aws_s3_bucket.lucidum_x_account_deploy.id
   policy = data.aws_iam_policy_document.lucidum_x_account_deploy.json
 }
 
-
+# Return bucket ID
 output "lucidum_x_account_deploy_s3_bucket" {
   value = aws_s3_bucket.lucidum_x_account_deploy.id
 }

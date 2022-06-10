@@ -55,6 +55,7 @@
                 "pricing:Describe*",
                 "pricing:Get*",
                 "rds:Describe*",
+                "redshift:Describe*",
                 "route53:List*",
                 "s3:Get*",
                 "s3:List*",

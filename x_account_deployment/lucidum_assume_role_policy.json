@@ -3,6 +3,8 @@
   "Statement": {
     "Effect": "Allow",
     "Action": [
+                "acm:List*",
+                "acm:Describe*",
                 "cloudtrail:Describe*",
                 "cloudtrail:Get*",
                 "cloudtrail:List*",

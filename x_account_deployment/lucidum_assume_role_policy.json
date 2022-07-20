@@ -70,8 +70,8 @@
                 "sts:Get*",
                 "sts:AssumeRole",
                 "tag:Get*",
-                "waf:List*",
-                "waf:Get*",
+                "wafv2:List*",
+                "wafv2:Get*",
                 "workspaces:Describe*"
     ],
     "Resource": "*"

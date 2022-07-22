@@ -5,6 +5,8 @@
         "Action": [
             "acm:List*",
             "acm:Describe*",
+            "cloudfront:List*",
+            "cloudfront:Get*",
             "cloudtrail:Describe*",
             "cloudtrail:Get*",
             "cloudtrail:List*",
